@@ -28,16 +28,23 @@ const Home = () => {
   //     console.log(import.meta.env.VITE_GROQ_API_KEY);
   //   }, []);
   const callGroq = async () => {
-    const res = await fetch("/api/server", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message: "HI" }),
-    });
-
-    const data = await res.json();
-    console.log("Groq Response:", data.reply);
+    try {
+      const res = await fetch("/api/server", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: "HI" }),
+      });
+      if (res.status === 200) {
+        const data = await res.json();
+        console.log("Groq Response:", data.reply);
+      } else {
+        console.log("Error");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
