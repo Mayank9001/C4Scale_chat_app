@@ -1,12 +1,107 @@
-# React + Vite
+# 🧠 Groq Chatbot UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive, minimal AI chatbot built with **React**, **Vite**, and **Tailwind CSS**, powered by **Groq's LLaMA 3.3 70B Versatile** model. It features persistent chat history, dark mode toggle, and multi-chat session support.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- ✅ Chat with the Groq LLaMA-3.3-70B model
+- ✅ Chat history saved in `localStorage`
+- ✅ Start new conversations
+- ✅ Load and delete saved chats
+- ✅ Dark / Light mode toggle
+- ✅ Mobile responsive layout
+- ✅ Markdown rendering for AI responses
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Tech Stack
+
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Groq SDK](https://www.npmjs.com/package/groq-sdk)
+- [React Markdown](https://github.com/remarkjs/react-markdown)
+- [Lucide Icons](https://lucide.dev/icons)
+
+---
+
+## 💠 Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Mayank9001/c4scale_chat_app
+cd c4scale_chat_app
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Add Your API Key
+
+Create a `.env` file in the root folder:
+
+```env
+VITE_GROQ_API_KEY=your_groq_api_key_here
+```
+
+> 🔐 You can get your API key from [Here](https://console.groq.com/keys)
+
+---
+
+## 🧪 Running the App
+
+### Development Mode
+
+```bash
+npm run dev
+```
+
+Visit: [http://localhost:5173](http://localhost:5173)
+
+### Production Build
+
+```bash
+npm run build
+```
+
+### Preview Production Build Locally
+
+```bash
+npm run preview
+```
+
+---
+
+## 🗂️ Project Structure
+
+```
+groq-chatbot-ui/
+├── public/                  # Static assets
+├── src/
+    ├──pages/
+        ├──Home.jsx          # Main Chat App Component
+│   ├── main.jsx             # App entry point
+│   ├── App.jsx              # Uses the Home.jsx to render the App
+│   └── index.css            # Tailwind and custom styles
+├── .env                     # API key config
+├── package.json
+└── vite.config.js
+```
+
+---
+
+## 🧑‍💻 Author
+
+Developed by [Mayank Vishwakarma](https://github.com/Mayank9001)
+
+---
+
+## 📸 Preview
+
+![alt text](<Screenshot (25).png>) ![alt text](<Screenshot (21).png>) ![alt text](<Screenshot (22).png>) ![alt text](<Screenshot (23).png>) ![alt text](<Screenshot (24).png>)
