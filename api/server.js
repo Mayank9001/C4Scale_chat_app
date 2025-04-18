@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   try {
     const completion = await groq.chat.completions.create({
       messages: [{ role: "user", content: message }],
-      model: "llama-3-3-70b-versatile",
+      model: "llama-3.3-70b-versatile",
     });
 
     res
