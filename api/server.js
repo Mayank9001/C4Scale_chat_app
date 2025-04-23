@@ -1,6 +1,6 @@
 import Groq from "groq-sdk";
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const groq = new Groq({ apiKey: process.env.VITE_GROQ_API_KEY });
 
 export default async function handler(req, res) {
   const { message } = req.body;
