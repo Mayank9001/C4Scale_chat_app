@@ -130,7 +130,7 @@ const Home = () => {
           <h2 className="text-xl font-bold">Chats</h2>
           <button
             onClick={createNewChat}
-            className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
+            className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded cursor-pointer"
             title="New Chat"
           >
             <Plus size={20} />
@@ -166,11 +166,11 @@ const Home = () => {
         <div className="flex justify-between items-center pt-4 border-t dark:border-gray-700 mt-auto fixed bottom-4 md:static w-56 md:w-auto">
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
+            className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded cursor-pointer"
           >
             {darkMode ? <Sun /> : <Moon />}
           </button>
-          <button className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+          <button className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded cursor-pointer">
             <Settings />
           </button>
         </div>
