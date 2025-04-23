@@ -1,13 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Moon, Sun, Settings, Plus, ArrowUp, Menu, Trash } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import Groq from "groq-sdk";
 import clsx from "clsx";
-
-const groq = new Groq({
-  apiKey: import.meta.env.VITE_GROQ_API_KEY,
-  dangerouslyAllowBrowser: true,
-});
 
 const Home = () => {
   const [messages, setMessages] = useState([]);
@@ -226,7 +220,7 @@ const Home = () => {
           <button
             onClick={sendMessage}
             className={clsx(
-              "absolute right-6 w-10 h-10 flex items-center justify-center rounded-full border border-gray-300",
+              "absolute right-6 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 cursor-pointer",
               loading
                 ? "bg-white opacity-50 cursor-not-allowed"
                 : "bg-white hover:bg-gray-100"
