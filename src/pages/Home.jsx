@@ -36,34 +36,67 @@ const Home = () => {
     window.addEventListener("beforeunload", handleUnload);
     return () => window.removeEventListener("beforeunload", handleUnload);
   }, [messages]);
+  // MayankVishwakarma
+  // const sendMessage = async () => {
+  //   if (!input.trim() || loading) return;
+
+  //   const userMessage = { sender: "user", text: input };
+  //   setMessages((prev) => [...prev, userMessage]);
+  //   setInput("");
+  //   setLoading(true);
+
+  //   try {
+  //     const res = await groq.chat.completions.create({
+  //       messages: [{ role: "user", content: userMessage.text }],
+  //       model: "llama-3.3-70b-versatile",
+  //     });
+
+  //     const reply = res.choices[0]?.message?.content || "No reply received.";
+  //     setMessages((prev) => [...prev, { sender: "system", text: reply }]);
+  //   } catch (error) {
+  //     console.error(error);
+  //     setMessages((prev) => [
+  //       ...prev,
+  //       { sender: "system", text: "Something went wrong." },
+  //     ]);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const sendMessage = async () => {
     if (!input.trim() || loading) return;
-
+  
     const userMessage = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setLoading(true);
-
+  
     try {
-      const res = await groq.chat.completions.create({
-        messages: [{ role: "user", content: userMessage.text }],
-        model: "llama-3.3-70b-versatile",
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: userMessage.text }),
       });
-
-      const reply = res.choices[0]?.message?.content || "No reply received.";
-      setMessages((prev) => [...prev, { sender: "system", text: reply }]);
-    } catch (error) {
-      console.error(error);
+  
+      const data = await res.json();
+      const reply = data.reply || "No reply";
+  
+      const systemMessage = { sender: "system", text: reply };
+      setMessages((prev) => [...prev, systemMessage]);
+    } catch (err) {
+      console.error(err);
       setMessages((prev) => [
         ...prev,
-        { sender: "system", text: "Something went wrong." },
+        { sender: "system", text: "Error getting reply." },
       ]);
     } finally {
       setLoading(false);
     }
   };
-
+  
   const createNewChat = () => {
     if (messages.length) {
       const updated = [...savedChats, messages];
@@ -84,7 +117,7 @@ const Home = () => {
     setSavedChats(updated);
     localStorage.setItem("savedChats", JSON.stringify(updated));
   };
-
+  // NarutoUzumaki
   const getChatSummary = (chat, idx) => {
     const firstUserMsg = chat.find((m) => m.sender === "user");
     return firstUserMsg
@@ -113,7 +146,7 @@ const Home = () => {
         </h2>
         <div className="w-10" />
       </div>
-
+      {/* MadaraUchiha */}
       <aside
         className={clsx(
           "fixed z-40 top-0 left-0 h-full w-64 bg-white dark:bg-slate-800 p-4 transition-transform duration-300 transform md:relative md:translate-x-0 md:flex md:flex-col md:w-72 pt-16 md:pt-4",
@@ -155,6 +188,7 @@ const Home = () => {
               </div>
             ))
           )}
+          {/* HashiramaSenju */}
         </div>
         <div className="flex justify-between items-center pt-4 border-t dark:border-gray-700 mt-auto fixed bottom-4 md:static w-56 md:w-auto">
           <button
