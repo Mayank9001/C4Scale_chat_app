@@ -37,33 +37,6 @@ const Home = () => {
     return () => window.removeEventListener("beforeunload", handleUnload);
   }, [messages]);
   // MayankVishwakarma
-  // const sendMessage = async () => {
-  //   if (!input.trim() || loading) return;
-
-  //   const userMessage = { sender: "user", text: input };
-  //   setMessages((prev) => [...prev, userMessage]);
-  //   setInput("");
-  //   setLoading(true);
-
-  //   try {
-  //     const res = await groq.chat.completions.create({
-  //       messages: [{ role: "user", content: userMessage.text }],
-  //       model: "llama-3.3-70b-versatile",
-  //     });
-
-  //     const reply = res.choices[0]?.message?.content || "No reply received.";
-  //     setMessages((prev) => [...prev, { sender: "system", text: reply }]);
-  //   } catch (error) {
-  //     console.error(error);
-  //     setMessages((prev) => [
-  //       ...prev,
-  //       { sender: "system", text: "Something went wrong." },
-  //     ]);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   const sendMessage = async () => {
     if (!input.trim() || loading) return;
   
@@ -73,7 +46,7 @@ const Home = () => {
     setLoading(true);
   
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch("/api/server", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
